@@ -45,7 +45,7 @@ class BaseModel(pl.LightningModule):
         # Compute accuracy
         preds = torch.argmax(preds, dim=1)
         acc = torch.sum(preds == labels).float() / len(labels)
-        self.log('val_acc', acc, prog_bar=True)
+        self.log('val_acc', acc)
 
         self.acc_val_avg.add(acc.item())
         self.loss_val_avg.add(loss.item())
