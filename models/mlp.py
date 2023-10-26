@@ -15,6 +15,9 @@ class MLP(BaseModel):
                 layers.append(nn.Linear(args.hidden_layer[i-1], args.hidden_layer[i]))
             layers.append(nn.ReLU())
         layers.append(nn.Linear(args.hidden_layer[-1], 200))
+        if args.dropout > 0:
+            layers.append(nn.Dropout(args.dropout))
+
         self.layers = nn.Sequential(*layers)
 
     def forward(self, x):

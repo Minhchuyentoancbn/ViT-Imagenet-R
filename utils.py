@@ -22,6 +22,7 @@ def parse_arguments(argv):
 
     # MLP hyperparameters
     parser.add_argument('--hidden_layer', type=int, nargs='+', default=[256], help='Hidden layer size, default: [256]')
+    parser.add_argument('--dropout', type=float, default=0.0, help='Dropout rate, default: 0.0')
 
 
     return parser.parse_args(argv)
