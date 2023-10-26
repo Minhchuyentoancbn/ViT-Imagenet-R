@@ -42,11 +42,11 @@ if __name__ == '__main__':
     eval_dataset = torch.utils.data.TensorDataset(eval_feats, eval_labels)
     train_loader = DataLoader(
         train_dataset, batch_size=args.batch_size, shuffle=True,
-        drop_last=True, num_workers=2, pin_memory=True
+        drop_last=True, num_workers=4, pin_memory=True
     )
     val_loader = DataLoader(
         eval_dataset, batch_size=args.batch_size, shuffle=False,
-        drop_last=False, num_workers=2, pin_memory=True
+        drop_last=False, num_workers=4, pin_memory=True
     )
 
     if args.model_name == 'MLP':
