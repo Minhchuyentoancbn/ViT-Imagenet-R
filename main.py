@@ -4,7 +4,7 @@ import torch
 import pytorch_lightning as pl
 
 from torch.utils.data import DataLoader
-from utils import parse_arguments
+from utils import parse_arguments, initialize_weights
 from config import DATA_DIR
 from models.mlp import MLP
 
@@ -51,6 +51,7 @@ if __name__ == '__main__':
 
     if args.model_name == 'MLP':
         model = MLP(args)
+        initialize_weights(model)
 
     # train model
     trainer = pl.Trainer(
