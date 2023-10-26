@@ -31,6 +31,7 @@ class BaseModel(pl.LightningModule):
 
         # Backpropagate
         self.manual_backward(loss)
+        opt.step()
         self.log('train_loss', loss, prog_bar=True)
 
 
