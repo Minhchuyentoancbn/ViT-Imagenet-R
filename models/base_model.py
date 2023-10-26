@@ -34,6 +34,9 @@ class BaseModel(pl.LightningModule):
         opt.step()
         self.log('train_loss', loss, prog_bar=True)
 
+        acc = torch.sum(torch.argmax(preds, dim=1) == labels).float() / len(labels)
+        self.log('train_acc', acc, prog_bar=True)
+
 
     def validation_step(self, batch, batch_idx):
         features, labels = batch
