@@ -37,7 +37,8 @@ class BaseModel(pl.LightningModule):
     def validation_step(self, batch, batch_idx):
         features, labels = batch
         self.eval()
-        preds = self(features)
+        with torch.no_grad():
+            preds = self(features)
         loss = self.criteria(preds, labels)
         self.log('val_loss', loss, prog_bar=True)
 
