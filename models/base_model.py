@@ -40,7 +40,7 @@ class BaseModel(pl.LightningModule):
         with torch.no_grad():
             preds = self(features)
         loss = self.criteria(preds, labels)
-        self.log('val_loss', loss, prog_bar=True)
+        self.log('val_loss', loss)
 
         # Compute accuracy
         preds = torch.argmax(preds, dim=1)
