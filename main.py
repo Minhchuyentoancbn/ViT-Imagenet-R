@@ -37,14 +37,6 @@ if __name__ == '__main__':
     eval_feats = torch.cat(eval_feats, dim=0)
     eval_labels = torch.cat(eval_labels, dim=0)
 
-    # Shuffle
-    idx = torch.randperm(len(train_feats))
-    train_feats = train_feats[idx]
-    train_labels = train_labels[idx]
-    idx = torch.randperm(len(eval_feats))
-    eval_feats = eval_feats[idx]
-    eval_labels = eval_labels[idx]
-
     # Data loader
     train_dataset = torch.utils.data.TensorDataset(train_feats, train_labels)
     eval_dataset = torch.utils.data.TensorDataset(eval_feats, eval_labels)
